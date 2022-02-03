@@ -11,6 +11,7 @@ jobs:
       - run: clang-format -i tests/*
   
   build:
+    needs: style
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
