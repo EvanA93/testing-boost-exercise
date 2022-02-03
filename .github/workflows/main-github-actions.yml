@@ -1,4 +1,4 @@
-name: name-github-actions
+name: main-github-actions
 on: [push]
 
 jobs:
