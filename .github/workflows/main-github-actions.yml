@@ -24,6 +24,25 @@ jobs:
       - name: 'Upload build directory'
         uses: actions/upload-artifact@v2
         with:
-          name: build directory
-          path: .build.tar
+          name: build_directory
+          path: build.tar
           retention-days: 14
+  
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: sudo apt-get install -y cmake
+      - run: sudo apt-get install -y build-essential
+      - run: sudo apt-get install -y libboost-all-dev
+      - run: sudo apt-get install -y libeigen3-dev
+      - run: sudo apt-get install -y libyaml-cpp-dev
+      - name: 'Download build file'
+        uses: actions/download-artifact@v2
+        with:
+          name: build_directory
+      - run: tar -xf build.tar
+      - run: cd build && ctest
+
+  
+
