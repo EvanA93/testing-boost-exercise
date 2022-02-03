@@ -72,4 +72,4 @@ You can format the code base using [clang-format](https://clang.llvm.org/docs/Cl
 $ clang-format -i src/*
 ```
 ## Testing Boost Badge
-![Testing Boost](https://github.com/EvanA93/testing-boost-exercise/tree/extend-tests/actions/workflows/main-github-actions.yml/badge.svg?branch=extend-tests)
+![Testing Boost](https://github.com/EvanA93/testing-boost-exercise/actions/workflows/main-github-actions.yml/badge.svg?branch=extend-tests)
