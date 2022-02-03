@@ -1,0 +1,10 @@
+name: name-github-actions
+on: [push]
+
+jobs:
+  style:
+    steps:
+      - uses: actions/checkout@v2
+      - run: sudo apt install clang-format
+      - run: clang-format -i src/*
+      - run: clang-format -i tests/*
