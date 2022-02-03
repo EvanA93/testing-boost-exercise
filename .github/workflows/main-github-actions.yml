@@ -6,6 +6,27 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: sudo apt install clang-format
+      - run: apt install clang-format
       - run: clang-format -i src/*
       - run: clang-format -i tests/*
+  
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: apt-get install cmake
+      - run: apt-get install -y build-essential
+      - run: apt-get install -y libboost-all-dev
+      - run: apt install -y libeigen3-dev
+      - run: apt-get install -y libyaml-cpp-dev
+      - run: mkdir build
+      - run: cd build
+      - run: cmake ..
+      - run: make -j
+      - run: tar -cvf build.tar build
+      - name: 'Upload build directory'
+        uses: actions/upload-artifact@v2
+        with:
+          name: build directory
+          path: .build.tar
+          retention-days: 14
